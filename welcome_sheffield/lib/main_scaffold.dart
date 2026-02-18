@@ -63,45 +63,38 @@ class _MainScaffoldState extends State<MainScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: Center(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: 28,
-                  height: 28,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: Row(
+            children: [
+              Container(
+                width: 28,
+                height: 28,
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(6),
                 ),
-                const SizedBox(width: 8),
-                const Text(
-                  'Sheffield Hallam University',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w400,
-                    letterSpacing: 0.2,
-                  ),
+              ),
+              const SizedBox(width: 8),
+              const Text(
+                'Sheffield City Council',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w400,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         backgroundColor: const Color(0xFF13384A),
         foregroundColor: Colors.white,
         elevation: 0,
-        toolbarHeight: 48, 
+        toolbarHeight: 48,
         actions: [
           IconButton(
             icon: const Icon(Icons.language),
             onPressed: () {},
-            padding: EdgeInsets.zero, 
-            constraints: const BoxConstraints(), 
           ),
         ],
       ),

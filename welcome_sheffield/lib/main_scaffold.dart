@@ -52,8 +52,8 @@ class _MainScaffoldState extends State<MainScaffold> {
       context,
       MaterialPageRoute(
         builder: (context) => MainScaffold(
-          child: content,
           currentIndex: index,
+          child: content,
         ),
       ),
     );

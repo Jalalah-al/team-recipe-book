@@ -100,7 +100,7 @@ class HomeScreen extends StatelessWidget {
           title,
           style: const TextStyle(
             fontSize: 16,
-            color: Colors.black87,
+            color: Colors.black87,  
           ),
         ),
         trailing: const Icon(
@@ -110,7 +110,7 @@ class HomeScreen extends StatelessWidget {
         onTap: () {
           
         },
-      ),
+      ), 
     );
   }
 }

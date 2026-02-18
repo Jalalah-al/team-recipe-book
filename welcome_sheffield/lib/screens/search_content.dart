@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'detail_page.dart';
 
 class SearchContent extends StatelessWidget {
   const SearchContent({super.key});
@@ -10,50 +11,44 @@ class SearchContent extends StatelessWidget {
       child: ListView(
         padding: const EdgeInsets.symmetric(vertical: 8),
         children: [
-          _buildListItem('Waste & Recycling'),
-          _buildListItem('Roads, Pavements & Transport'),
-          _buildListItem('Housing & Property'),
-          _buildListItem('Community & Safety'),
-          _buildListItem('Emergencies & Severe Weather'),
-          _buildListItem('Housing & Homeless'),
-          _buildListItem('Families and Education'),
-          _buildListItem('Public Spaces'),
-          _buildListItem('Libraries, learning and help'),
-          _buildListItem('Health & Care'),
-          _buildListItem('Benefits and Cost of Living'),
-          _buildListItem('Events and Tourism'),
-          _buildListItem('Disability and Accessibility'),
-          _buildListItem('Legal rights and immigration'),
-          _buildListItem('Contact Us/Help'),
+          _buildListItem('Waste & Recycling', context),
+          _buildListItem('Roads, Pavements & Transport', context),
+          _buildListItem('Housing & Property', context),
+          _buildListItem('Community & Safety', context),
+          _buildListItem('Emergencies & Severe Weather', context),
+          _buildListItem('Housing & Homeless', context),
+          _buildListItem('Families and Education', context),
+          _buildListItem('Public Spaces', context),
+          _buildListItem('Libraries, learning and help', context),
+          _buildListItem('Health & Care', context),
+          _buildListItem('Benefits and Cost of Living', context),
+          _buildListItem('Events and Tourism', context),
+          _buildListItem('Disability and Accessibility', context),
+          _buildListItem('Legal rights and immigration', context),
+          _buildListItem('Contact Us/Help', context),
         ],
       ),
     );
   }
 
-  Widget _buildListItem(String title) {
+  Widget _buildListItem(String title, BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         border: Border(
-          bottom: BorderSide(
-            color: Colors.grey.shade300,
-            width: 1,
-          ),
+          bottom: BorderSide(color: Colors.grey.shade300, width: 1),
         ),
       ),
       child: ListTile(
-        title: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 16,
-            color: Colors.black87,
-          ),
-        ),
-        trailing: const Icon(
-          Icons.chevron_right,
-          color: Colors.grey,
-        ),
+        title: Text(title, style: const TextStyle(fontSize: 16, color: Colors.black87)),
+        trailing: const Icon(Icons.chevron_right, color: Colors.grey),
         onTap: () {
-          
+          // THIS OPENS HER DETAIL PAGE
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DetailPage(title: title),
+            ),
+          );
         },
       ),
     );

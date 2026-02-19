@@ -59,7 +59,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (_) => const LanguageScreen(),

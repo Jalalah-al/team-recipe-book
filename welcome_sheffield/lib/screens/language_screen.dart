@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:welcome_sheffield/main_scaffold.dart';
+import 'welcome_screen.dart';
 
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
@@ -86,7 +87,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (_) => const MainScaffold()),
+                    MaterialPageRoute(builder: (_) => const WelcomeScreen()),
                   );
                 },
                 child: const Text(

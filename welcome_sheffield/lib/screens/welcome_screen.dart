@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:welcome_sheffield/main_scaffold.dart';
 import 'tutorial_screen.dart';
+import 'language_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -103,7 +104,7 @@ class WelcomeScreen extends StatelessWidget {
               Center(
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> const LanguageScreen()),);
                   },
                   child: const Text("Change language"),
                 ),

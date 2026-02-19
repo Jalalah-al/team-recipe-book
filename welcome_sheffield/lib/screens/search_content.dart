@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'detail_page.dart';
+import 'contactus_screen.dart'; 
 
 class SearchContent extends StatelessWidget {
   const SearchContent({super.key});
@@ -42,13 +43,23 @@ class SearchContent extends StatelessWidget {
         title: Text(title, style: const TextStyle(fontSize: 16, color: Colors.black87)),
         trailing: const Icon(Icons.chevron_right, color: Colors.grey),
         onTap: () {
-          // THIS OPENS HER DETAIL PAGE
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => DetailPage(title: title),
-            ),
-          );
+          
+          if (title == 'Contact Us/Help') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ContactUsScreen(),
+              ),
+            );
+          } else {
+            // For all other items, go to detail page
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailPage(title: title),
+              ),
+            );
+          }
         },
       ),
     );

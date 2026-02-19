@@ -14,11 +14,11 @@ class _LanguageScreenState extends State<LanguageScreen> {
 
   final List<String> languages = [
     "English",
-    "Arabic",
-    "Malay",
-    "Somali",
-    "Hindi",
-    "Korean",
+    "Arabic (العربية)",
+    "Malay (Bahasa Melayu)",
+    "Somali (Soomaali) ",
+    "Hindi (हिन्दी)",
+    "Korean (한국어)",
   ];
 
   @override

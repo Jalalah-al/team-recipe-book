@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:welcome_sheffield/main_scaffold.dart';
+import 'welcome_screen.dart';
 
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
@@ -8,68 +10,52 @@ class LanguageScreen extends StatefulWidget {
 }
 
 class _LanguageScreenState extends State<LanguageScreen> {
-  String selectedLanguage = "Arabic";
+  String selectedLanguage = "English";
 
   final List<String> languages = [
     "English",
     "Arabic",
-    "Spanish",
-    "French",
     "Malay",
+    "Somali",
     "Hindi",
     "Korean",
-    "Somali",
-
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-            backgroundColor: const Color(0xFF13384A),
-            foregroundColor: Colors.white,
-            title: const Text("Choose the language"),
-            elevation: 0,
-        ),
-  
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF13384A),
+        foregroundColor: Colors.white,
+        title: const Text("Choose the language"),
+        elevation: 0,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             const SizedBox(height: 10),
-
             const Text(
               "Select your preferred language below. This helps us serve you better.",
               style: TextStyle(fontSize: 14, color: Colors.black),
             ),
-
             const SizedBox(height: 25),
-
             const Text(
               "You Selected",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-
             const SizedBox(height: 10),
-
             _buildSelectedCard(),
-
             const SizedBox(height: 25),
-
             const Text(
               "All Languages",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-
             const SizedBox(height: 10),
-
             _buildSearchBar(),
-
             const SizedBox(height: 10),
-
             Expanded(
               child: ListView.builder(
                 itemCount: languages.length,
@@ -80,22 +66,14 @@ class _LanguageScreenState extends State<LanguageScreen> {
                   return ListTile(
                     title: Text(language),
                     trailing: isSelected
-                        ? const Icon(Icons.check_circle,
-                            color: Colors.teal)
-                        : const Icon(Icons.radio_button_unchecked,
-                            color: Colors.grey),
-                    onTap: () {
-                      setState(() {
-                        selectedLanguage = language;
-                      });
-                    },
+                        ? const Icon(Icons.check_circle, color: Colors.teal)
+                        : const Icon(Icons.radio_button_unchecked, color: Colors.grey),
+                    onTap: () => setState(() => selectedLanguage = language),
                   );
                 },
               ),
             ),
-
             const SizedBox(height: 10),
-
             SizedBox(
               width: double.infinity,
               height: 55,
@@ -107,7 +85,10 @@ class _LanguageScreenState extends State<LanguageScreen> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => const WelcomeScreen()),
+                  );
                 },
                 child: const Text(
                   "Continue",
@@ -115,7 +96,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 ),
               ),
             ),
-
             const SizedBox(height: 20),
           ],
         ),

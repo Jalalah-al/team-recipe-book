@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'main_scaffold.dart';
-import 'screens/home_content.dart';
 import 'screens/splash_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,10 +23,7 @@ class WelcomeSheffieldApp extends StatelessWidget {
         ),
         textTheme: GoogleFonts.poppinsTextTheme(),
       ),
-      home: const MainScaffold(  // ONLY ONE home property
-        child: HomeContent(),
-        currentIndex: 0,
-      ),
+      home: const SplashScreen(),  
     );
   }
 }

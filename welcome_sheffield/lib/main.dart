@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'main_scaffold.dart';
-import 'screens/content.dart';
+import 'screens/splash_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 void main() {
   runApp(const WelcomeSheffieldApp());
@@ -15,31 +13,17 @@ class WelcomeSheffieldApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'Welcome to Sheffield',
       theme: ThemeData(
         useMaterial3: true,
-
-        scaffoldBackgroundColor: Colors.white,
-
+        scaffoldBackgroundColor: const Color(0xFF13384A),
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF13384A),
           foregroundColor: Colors.white,
-          centerTitle: false,
         ),
-
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: Color(0xFF13384A),
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white70,
-        ),
-
-        textTheme: GoogleFonts.poppinsTextTheme().apply(
-          bodyColor: Colors.black,
-          displayColor: Colors.black,
-        ),
+        textTheme: GoogleFonts.poppinsTextTheme(),
       ),
-
-      home: const ContentPage(title: "Test Page"),
-
+      home: const SplashScreen(),  
     );
   }
 }

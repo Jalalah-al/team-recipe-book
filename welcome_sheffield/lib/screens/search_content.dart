@@ -69,7 +69,7 @@ class _SearchContentState extends State<SearchContent> {
       child: ListView(
         padding: const EdgeInsets.symmetric(vertical: 8),
         children: [
-          // the search bar itself
+         
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
             child: TextField(
@@ -122,7 +122,6 @@ class _SearchContentState extends State<SearchContent> {
               ),
             ),
 
-// filter 
           for (final title in items) _buildListItem(title, context),
         ],
       ),

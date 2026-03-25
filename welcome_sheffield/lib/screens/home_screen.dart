@@ -135,7 +135,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             const CategoriesScreen(),
                         ),
                     ),
-                    );
                 }
 
                 final f = quickFeatures[index];

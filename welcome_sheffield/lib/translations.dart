@@ -85,6 +85,24 @@ const Map<String, Map<String, String>> translations = {
   'app_version': 'App Version',
   'privacy_policy': 'Privacy Policy',
   'contact_support': 'Contact Support',
+
+  //map
+  "city_maps": "City Maps",
+  "find_whats_near_you": "Find what's near you",
+  "search_for_places": "Search for places",
+  "search_results": "Search results",
+  "no_results_found": "No results found",
+  "browse_by_category": "Browse by category",
+  "green_spaces": "Green spaces",
+  "food_drink": "Food & drink",
+  "council_buildings": "Council buildings",
+  "search_anything": "Search anything",
+  "council": "Council",
+  "park": "Park",
+  "shopping": "Shopping",
+  "restaurant": "Restaurant",
+  "pub": "Pub",
+  "library_place": "Library",
   },
 
   'ar': {
@@ -173,6 +191,24 @@ const Map<String, Map<String, String>> translations = {
   'app_version': 'إصدار التطبيق',
   'privacy_policy': 'سياسة الخصوصية',
   'contact_support': 'الاتصال بالدعم',
+
+  //map
+  "city_maps": "خرائط المدينة",
+  "find_whats_near_you": "ابحث عما هو قريب منك",
+  "search_for_places": "ابحث عن أماكن",
+  "search_results": "نتائج البحث",
+  "no_results_found": "لا توجد نتائج",
+  "browse_by_category": "تصفح حسب الفئة",
+  "green_spaces": "المساحات الخضراء",
+  "food_drink": "طعام وشراب",
+  "council_buildings": "مباني المجلس",
+  "search_anything": "ابحث عن أي شيء",
+  "council": "المجلس",
+  "park": "حديقة",
+  "shopping": "تسوق",
+  "restaurant": "مطعم",
+  "pub": "حانة",
+  "library_place": "مكتبة",
   },
 
 
@@ -262,6 +298,23 @@ const Map<String, Map<String, String>> translations = {
   'privacy_policy': 'Datenschutzrichtlinie',
   'contact_support': 'Support kontaktieren',
 
+  //map
+  "city_maps": "Stadtkarte",
+  "find_whats_near_you": "Finde Orte in deiner Nähe",
+  "search_for_places": "Nach Orten suchen",
+  "search_results": "Suchergebnisse",
+  "no_results_found": "Keine Ergebnisse gefunden",
+  "browse_by_category": "Nach Kategorie suchen",
+  "green_spaces": "Grünflächen",
+  "food_drink": "Essen & Trinken",
+  "council_buildings": "Rathaus / Behörden",
+  "search_anything": "Alles durchsuchen",
+  "council": "Rathaus",
+  "park": "Park",
+  "shopping": "Einkaufen",
+  "restaurant": "Restaurant",
+  "pub": "Kneipe",
+  "library_place": "Bibliothek",
   },
   
   'pl': {
@@ -349,6 +402,24 @@ const Map<String, Map<String, String>> translations = {
   'app_version': 'Wersja aplikacji',
   'privacy_policy': 'Polityka prywatności',
   'contact_support': 'Skontaktuj się ze wsparciem',
+
+  //map
+  "city_maps": "Mapa miasta",
+  "find_whats_near_you": "Znajdź miejsca w pobliżu",
+  "search_for_places": "Szukaj miejsc",
+  "search_results": "Wyniki wyszukiwania",
+  "no_results_found": "Brak wyników",
+  "browse_by_category": "Przeglądaj według kategorii",
+  "green_spaces": "Tereny zielone",
+  "food_drink": "Jedzenie i napoje",
+  "council_buildings": "Budynki urzędu",
+  "search_anything": "Szukaj wszystkiego",
+  "council": "Urząd",
+  "park": "Park",
+  "shopping": "Zakupy",
+  "restaurant": "Restauracja",
+  "pub": "Pub",
+  "library_place": "Biblioteka",
   },
 
   'es': {
@@ -428,6 +499,23 @@ const Map<String, Map<String, String>> translations = {
   'app_version': 'Versión',
   'privacy_policy': 'Privacidad',
   'contact_support': 'Soporte',
+
+  "city_maps": "Mapa de la ciudad",
+  "find_whats_near_you": "Encuentra lo que hay cerca",
+  "search_for_places": "Buscar lugares",
+  "search_results": "Resultados de búsqueda",
+  "no_results_found": "No se encontraron resultados",
+  "browse_by_category": "Buscar por categoría",
+  "green_spaces": "Espacios verdes",
+  "food_drink": "Comida y bebida",
+  "council_buildings": "Edificios del ayuntamiento",
+  "search_anything": "Buscar cualquier cosa",
+  "council": "Ayuntamiento",
+  "park": "Parque",
+  "shopping": "Compras",
+  "restaurant": "Restaurante",
+  "pub": "Pub",
+  "library_place": "Biblioteca",
   },
 
   'fr': {
@@ -515,6 +603,24 @@ const Map<String, Map<String, String>> translations = {
   'app_version': 'Version',
   'privacy_policy': 'Confidentialité',
   'contact_support': 'Support',
+
+  //map
+  "city_maps": "Carte de la ville",
+  "find_whats_near_you": "Trouvez ce qui est près de vous",
+  "search_for_places": "Rechercher des lieux",
+  "search_results": "Résultats de recherche",
+  "no_results_found": "Aucun résultat trouvé",
+  "browse_by_category": "Parcourir par catégorie",
+  "green_spaces": "Espaces verts",
+  "food_drink": "Nourriture et boissons",
+  "council_buildings": "Bâtiments du conseil",
+  "search_anything": "Rechercher tout",
+  "council": "Conseil",
+  "park": "Parc",
+  "shopping": "Shopping",
+  "restaurant": "Restaurant",
+  "pub": "Pub",
+  "library_place": "Bibliothèque",
   },
 
   'ur': {
@@ -604,6 +710,24 @@ const Map<String, Map<String, String>> translations = {
   'app_version': 'ورژن',
   'privacy_policy': 'رازداری',
   'contact_support': 'مدد',
+
+  //map
+  "city_maps": "شہر کا نقشہ",
+  "find_whats_near_you": "اپنے قریب کی جگہیں تلاش کریں",
+  "search_for_places": "جگہیں تلاش کریں",
+  "search_results": "تلاش کے نتائج",
+  "no_results_found": "کوئی نتیجہ نہیں ملا",
+  "browse_by_category": "قسم کے مطابق دیکھیں",
+  "green_spaces": "سبز مقامات",
+  "food_drink": "کھانا اور مشروبات",
+  "council_buildings": "کونسل کی عمارتیں",
+  "search_anything": "کچھ بھی تلاش کریں",
+  "council": "کونسل",
+  "park": "پارک",
+  "shopping": "خریداری",
+  "restaurant": "ریستوران",
+  "pub": "پب",
+  "library_place": "لائبریری",
   },
 
   'zh': {
@@ -693,6 +817,24 @@ const Map<String, Map<String, String>> translations = {
   'app_version': '版本',
   'privacy_policy': '隐私政策',
   'contact_support': '支持',
+
+  //map
+  "city_maps": "城市地图",
+  "find_whats_near_you": "查找附近的地点",
+  "search_for_places": "搜索地点",
+  "search_results": "搜索结果",
+  "no_results_found": "未找到结果",
+  "browse_by_category": "按类别浏览",
+  "green_spaces": "绿地",
+  "food_drink": "餐饮",
+  "council_buildings": "市政建筑",
+  "search_anything": "搜索任何内容",
+  "council": "市政厅",
+  "park": "公园",
+  "shopping": "购物",
+  "restaurant": "餐厅",
+  "pub": "酒吧",
+  "library_place": "图书馆",
   },
 
   'ro': {
@@ -702,7 +844,6 @@ const Map<String, Map<String, String>> translations = {
   'welcome_bullet_1': 'Caută servicii',
   'welcome_bullet_2': 'Găsește ajutor aproape',
   'welcome_bullet_3': 'Acces rapid la urgențe',
-
   'continue': 'Continuă',
   'change_language': 'Schimbă limba',
   'search': 'Caută',
@@ -724,7 +865,6 @@ const Map<String, Map<String, String>> translations = {
   'skip': 'Sari',
   'next': 'Următor',
   'get_started': 'Începe',
-
   'tutorial_1_title': 'Găsește servicii ușor',
   'tutorial_1_desc': 'Caută locuință, sănătate și beneficii.',
   'tutorial_2_title': 'Ajutor bazat pe locație',
@@ -782,6 +922,24 @@ const Map<String, Map<String, String>> translations = {
   'app_version': 'Versiune',
   'privacy_policy': 'Confidențialitate',
   'contact_support': 'Suport',
+
+  //map
+  "city_maps": "Harta orașului",
+  "find_whats_near_you": "Găsește ce este aproape",
+  "search_for_places": "Caută locuri",
+  "search_results": "Rezultate",
+  "no_results_found": "Nu s-au găsit rezultate",
+  "browse_by_category": "Caută după categorie",
+  "green_spaces": "Spații verzi",
+  "food_drink": "Mâncare și băuturi",
+  "council_buildings": "Clădiri ale consiliului",
+  "search_anything": "Caută orice",
+  "council": "Consiliu",
+  "park": "Parc",
+  "shopping": "Cumpărături",
+  "restaurant": "Restaurant",
+  "pub": "Pub",
+  "library_place": "Bibliotecă",
   },
 
   'sk': {
@@ -791,7 +949,6 @@ const Map<String, Map<String, String>> translations = {
   'welcome_bullet_1': 'Vyhľadávať služby',
   'welcome_bullet_2': 'Nájsť pomoc v okolí',
   'welcome_bullet_3': 'Rýchly prístup k núdzi',
-
   'continue': 'Pokračovať',
   'change_language': 'Zmeniť jazyk',
   'search': 'Hľadať',
@@ -813,7 +970,6 @@ const Map<String, Map<String, String>> translations = {
   'skip': 'Preskočiť',
   'next': 'Ďalej',
   'get_started': 'Začať',
-
   'tutorial_1_title': 'Jednoduché hľadanie služieb',
   'tutorial_1_desc': 'Vyhľadajte bývanie, zdravie a pomoc.',
   'tutorial_2_title': 'Pomoc podľa polohy',
@@ -871,8 +1027,25 @@ const Map<String, Map<String, String>> translations = {
   'app_version': 'Verzia',
   'privacy_policy': 'Ochrana súkromia',
   'contact_support': 'Podpora',
+
+  //map
+  "city_maps": "Mapa mesta",
+  "find_whats_near_you": "Nájdite, čo je vo vašom okolí",
+  "search_for_places": "Hľadať miesta",
+  "search_results": "Výsledky hľadania",
+  "no_results_found": "Nenašli sa žiadne výsledky",
+  "browse_by_category": "Prehliadať podľa kategórie",
+  "green_spaces": "Zelené plochy",
+  "food_drink": "Jedlo a nápoje",
+  "council_buildings": "Budovy úradu",
+  "search_anything": "Hľadať čokoľvek",
+  "council": "Úrad",
+  "park": "Park",
+  "shopping": "Nákupy",
+  "restaurant": "Reštaurácia",
+  "pub": "Pub",
+  "library_place": "Knižnica",
   },
 
-  
 };
 

@@ -4,6 +4,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'nearby_map.dart';
 import 'live_search_map.dart';
+import '../tr_helper.dart';
 
 class MapsContent extends StatefulWidget {
   const MapsContent({super.key});
@@ -105,6 +106,31 @@ class _MapsContentState extends State<MapsContent> {
     });
   }
 
+  String _translateCategory(BuildContext context, String category) {
+    switch (category) {
+      case 'Transport':
+        return tr(context, 'transport');
+      case 'Council':
+        return tr(context, 'council');
+      case 'Park':
+        return tr(context, 'park');
+      case 'Healthcare':
+        return tr(context, 'healthcare');
+      case 'Education':
+        return tr(context, 'education');
+      case 'Shopping':
+        return tr(context, 'shopping');
+      case 'Restaurant':
+        return tr(context, 'restaurant');
+      case 'Pub':
+        return tr(context, 'pub');
+      case 'Library':
+        return tr(context, 'library_place');
+      default:
+        return category;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,11 +144,11 @@ class _MapsContentState extends State<MapsContent> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 color: const Color(0xFF13384A),
-                child: const Column(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'City Maps',
+                      tr(context, 'city_maps'),
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
@@ -131,7 +157,7 @@ class _MapsContentState extends State<MapsContent> {
                     ),
                     SizedBox(height: 4),
                     Text(
-                      'Find what\'s near you',
+                      tr(context, 'find_whats_near_you'),
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.white70,
@@ -149,7 +175,7 @@ class _MapsContentState extends State<MapsContent> {
                   controller: _searchController,
                   onChanged: _search,
                   decoration: InputDecoration(
-                    hintText: 'Search for places...',
+                    hintText: tr(context, 'search_for_places'),
                     prefixIcon: const Icon(Icons.search),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
@@ -209,8 +235,8 @@ class _MapsContentState extends State<MapsContent> {
               sliver: SliverList(
                 delegate: SliverChildListDelegate([
                   if (_searchResults.isNotEmpty) ...[
-                    const Text(
-                      'Search Results:',
+                      Text(
+                      tr(context, 'search_results'),
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -221,11 +247,11 @@ class _MapsContentState extends State<MapsContent> {
                     ..._searchResults.map((place) => _buildResultCard(place)),
                     const SizedBox(height: 40),
                   ] else if (_searchController.text.isNotEmpty) ...[
-                    const Center(
+                    Center(
                       child: Padding(
                         padding: EdgeInsets.all(32),
                         child: Text(
-                          'No results found',
+                          tr(context, 'no_results_found'),
                           style: TextStyle(color: Colors.grey),
                         ),
                       ),
@@ -233,8 +259,8 @@ class _MapsContentState extends State<MapsContent> {
                   ],
                   
                   if (_searchResults.isEmpty && _searchController.text.isEmpty) ...[
-                    const Text(
-                      'Browse by category:',
+                    Text(
+                      tr(context, 'browse_by_category'),
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -242,14 +268,14 @@ class _MapsContentState extends State<MapsContent> {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    _buildCategoryButton(Icons.directions_bus, 'Transport', 'transport'),
-                    _buildCategoryButton(Icons.park, 'Green Spaces', 'parks'),
-                    _buildCategoryButton(Icons.local_hospital, 'Healthcare', 'healthcare'),
-                    _buildCategoryButton(Icons.school, 'Education', 'education'),
-                    _buildCategoryButton(Icons.shopping_cart, 'Shops', 'shops'),
-                    _buildCategoryButton(Icons.restaurant, 'Food & Drink', 'food'),
-                    _buildCategoryButton(Icons.account_balance, 'Council Buildings', 'council'),
-                    _buildCategoryButton(Icons.search, 'Search Anything', 'search'),
+                    _buildCategoryButton(Icons.directions_bus, tr(context, 'transport'), 'transport'),
+                    _buildCategoryButton(Icons.park, tr(context, 'green_spaces'), 'parks'),
+                    _buildCategoryButton(Icons.local_hospital, tr(context, 'healthcare'), 'healthcare'),
+                    _buildCategoryButton(Icons.school, tr(context, 'education'), 'education'),
+                    _buildCategoryButton(Icons.shopping_cart, tr(context, 'shops'), 'shops'),
+                    _buildCategoryButton(Icons.restaurant, tr(context, 'food_drink'), 'food'),
+                    _buildCategoryButton(Icons.account_balance, tr(context, 'council_buildings'), 'council'),
+                    _buildCategoryButton(Icons.search, tr(context, 'search_anything'), 'search'),
                     const SizedBox(height: 40),
                   ],
                 ]),
@@ -270,7 +296,7 @@ class _MapsContentState extends State<MapsContent> {
           color: const Color(0xFF13384A),
         ),
         title: Text(place['name']),
-        subtitle: Text(place['category']),
+        subtitle: Text(_translateCategory(context, place['category'])),
         trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
         onTap: () {
           Navigator.push(

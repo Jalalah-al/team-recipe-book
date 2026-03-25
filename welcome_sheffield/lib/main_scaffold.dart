@@ -3,6 +3,7 @@ import 'screens/home_screen.dart';
 import 'screens/search_content.dart';
 import 'screens/maps_content.dart';
 import 'screens/settings_content.dart';
+import 'screens/language_screen.dart';
 
 class MainScaffold extends StatefulWidget {
   const MainScaffold({super.key});
@@ -37,7 +38,12 @@ class _MainScaffoldState extends State<MainScaffold> {
           IconButton(
             icon: const Icon(Icons.language),
             onPressed: () {
-              
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LanguageScreen(),
+                ),
+              );
             },
           ),
         ],

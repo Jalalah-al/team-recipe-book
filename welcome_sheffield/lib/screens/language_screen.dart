@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:welcome_sheffield/main_scaffold.dart';
+import 'package:welcome_sheffield/app_state.dart';
 import 'welcome_screen.dart';
 
 class LanguageScreen extends StatefulWidget {
@@ -10,25 +10,47 @@ class LanguageScreen extends StatefulWidget {
 }
 
 class _LanguageScreenState extends State<LanguageScreen> {
-  String selectedLanguage = "English";
+  String selectedLanguage = "en";
+  String searchQuery = "";
 
-  final List<String> languages = [
-    "English",
-    "Arabic (العربية)",
-    "Malay (Bahasa Melayu)",
-    "Somali (Soomaali) ",
-    "Hindi (हिन्दी)",
-    "Korean (한국어)",
+  final List<Map<String, String>> languages = const [
+    {"code": "en", "label": "English"},
+    {"code": "ar", "label": "Arabic (العربية)"},
+    {"code": "de", "label": "German (Deutsch)"},
+    {"code": "pl", "label": "Polish (Polski)"},
+    {"code": "es", "label": "Spanish (Español)"},
+    {"code": "fr", "label": "French (Français)"},
+    {"code": "ur", "label": "Urdu (اردو)"},
+    {"code": "zh", "label": "Mandarin Chinese (中文)"},
+    {"code": "ro", "label": "Romanian (Română)"},
+    {"code": "sk", "label": "Slovak (Slovenčina)"},
   ];
+
+  List<Map<String, String>> get filteredLanguages {
+    if (searchQuery.trim().isEmpty) return languages;
+
+    return languages.where((lang) {
+      final label = lang["label"]!.toLowerCase();
+      final code = lang["code"]!.toLowerCase();
+      final query = searchQuery.toLowerCase();
+      return label.contains(query) || code.contains(query);
+    }).toList();
+  }
+
+  String getSelectedLabel() {
+    return languages.firstWhere((lang) => lang["code"] == selectedLanguage)["label"]!;
+  }
 
   @override
   Widget build(BuildContext context) {
+    final appState = AppState.of(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color(0xFF13384A),
         foregroundColor: Colors.white,
-        title: const Text("Choose the language"),
+        title: Text(appState.tr("choose_language_title")),
         elevation: 0,
       ),
       body: Padding(
@@ -37,38 +59,42 @@ class _LanguageScreenState extends State<LanguageScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
-            const Text(
-              "Select your preferred language below. This helps us serve you better.",
-              style: TextStyle(fontSize: 14, color: Colors.black),
+            Text(
+              appState.tr("choose_language_desc"),
+              style: const TextStyle(fontSize: 14, color: Colors.black),
             ),
             const SizedBox(height: 25),
-            const Text(
-              "You Selected",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            Text(
+              appState.tr("you_selected"),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
             _buildSelectedCard(),
             const SizedBox(height: 25),
-            const Text(
-              "All Languages",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            Text(
+              appState.tr("all_languages"),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
-            _buildSearchBar(),
+            _buildSearchBar(appState),
             const SizedBox(height: 10),
             Expanded(
               child: ListView.builder(
-                itemCount: languages.length,
+                itemCount: filteredLanguages.length,
                 itemBuilder: (context, index) {
-                  final language = languages[index];
-                  final isSelected = language == selectedLanguage;
+                  final language = filteredLanguages[index];
+                  final isSelected = language["code"] == selectedLanguage;
 
                   return ListTile(
-                    title: Text(language),
+                    title: Text(language["label"]!),
                     trailing: isSelected
                         ? const Icon(Icons.check_circle, color: Colors.teal)
                         : const Icon(Icons.radio_button_unchecked, color: Colors.grey),
-                    onTap: () => setState(() => selectedLanguage = language),
+                    onTap: () {
+                      setState(() {
+                        selectedLanguage = language["code"]!;
+                      });
+                    },
                   );
                 },
               ),
@@ -85,14 +111,16 @@ class _LanguageScreenState extends State<LanguageScreen> {
                   ),
                 ),
                 onPressed: () {
+                  appState.changeLanguage(selectedLanguage);
+
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (_) => const WelcomeScreen()),
                   );
                 },
-                child: const Text(
-                  "Continue",
-                  style: TextStyle(fontSize: 16, color: Colors.white),
+                child: Text(
+                  appState.tr("continue"),
+                  style: const TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
             ),
@@ -113,17 +141,28 @@ class _LanguageScreenState extends State<LanguageScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(selectedLanguage),
+          Expanded(
+            child: Text(
+              getSelectedLabel(),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          const SizedBox(width: 10),
           const Icon(Icons.check_circle, color: Colors.teal),
         ],
       ),
     );
   }
 
-  Widget _buildSearchBar() {
+  Widget _buildSearchBar(dynamic appState) {
     return TextField(
+      onChanged: (value) {
+        setState(() {
+          searchQuery = value;
+        });
+      },
       decoration: InputDecoration(
-        hintText: "Search",
+        hintText: appState.tr("search"),
         prefixIcon: const Icon(Icons.search),
         filled: true,
         fillColor: Colors.grey.shade200,

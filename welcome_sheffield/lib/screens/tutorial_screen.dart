@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:welcome_sheffield/app_state.dart';
 import 'package:welcome_sheffield/main_scaffold.dart';
 
 class TutorialScreen extends StatefulWidget {
@@ -12,29 +13,30 @@ class _TutorialScreenState extends State<TutorialScreen> {
   final PageController _controller = PageController();
   int currentPage = 0;
 
-  final List<Map<String, String>> slides = [
+  final List<Map<String, String>> slides = const [
     {
-      "title": "Find Services Easily",
-      "desc": "Search for housing, health, benefits and more in one place."
+      "titleKey": "tutorial_1_title",
+      "descKey": "tutorial_1_desc",
     },
     {
-      "title": "Location Based Help",
-      "desc": "Find the nearest GP, pharmacy, police station or support centre."
+      "titleKey": "tutorial_2_title",
+      "descKey": "tutorial_2_desc",
     },
     {
-      "title": "Quick Emergency Access",
-      "desc": "Access 999, 111 and 101 quickly when you need urgent help."
+      "titleKey": "tutorial_3_title",
+      "descKey": "tutorial_3_desc",
     },
   ];
 
   @override
   Widget build(BuildContext context) {
+    final appState = AppState.of(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: [
-
             Align(
               alignment: Alignment.topRight,
               child: TextButton(
@@ -44,10 +46,9 @@ class _TutorialScreenState extends State<TutorialScreen> {
                     MaterialPageRoute(builder: (_) => const MainScaffold()),
                   );
                 },
-                child: const Text("Skip"),
+                child: Text(appState.tr("skip")),
               ),
             ),
-
             Expanded(
               child: PageView.builder(
                 controller: _controller,
@@ -72,7 +73,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
                         ),
                         const SizedBox(height: 40),
                         Text(
-                          slides[index]["title"]!,
+                          appState.tr(slides[index]["titleKey"]!),
                           style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
@@ -81,7 +82,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
                         ),
                         const SizedBox(height: 20),
                         Text(
-                          slides[index]["desc"]!,
+                          appState.tr(slides[index]["descKey"]!),
                           style: const TextStyle(fontSize: 16),
                           textAlign: TextAlign.center,
                         ),
@@ -91,9 +92,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
                 },
               ),
             ),
-
             const SizedBox(height: 20),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
@@ -111,9 +110,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
                 ),
               ),
             ),
-
             const SizedBox(height: 30),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: SizedBox(
@@ -142,13 +139,12 @@ class _TutorialScreenState extends State<TutorialScreen> {
                   ),
                   child: Text(
                     currentPage == slides.length - 1
-                        ? "Get Started"
-                        : "Next",
+                        ? appState.tr("get_started")
+                        : appState.tr("next"),
                   ),
                 ),
               ),
             ),
-
             const SizedBox(height: 30),
           ],
         ),

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'categories_screen.dart';
+import '../tr_helper.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,32 +16,34 @@ class _HomeScreenState extends State<HomeScreen> {
   Timer? _timer;
   int _pageIndex = 0;
 
-
   final List<_BannerItem> banners = const [
     _BannerItem(
-      title: "Today’s tip",
-      subtitle: "Register with a GP as soon as you can.",
+      titleKey: "today_tip",
+      subtitleKey: "gp_register_tip",
       icon: Icons.local_hospital,
+      imagePath: "lib/images/GP.jpeg",
     ),
     _BannerItem(
-      title: "Bins reminder",
-      subtitle: "Check collection day for your postcode.",
+      titleKey: "bins_reminder",
+      subtitleKey: "bins_postcode_tip",
       icon: Icons.delete_outline,
+      imagePath: "lib/images/bins.jpeg",
     ),
     _BannerItem(
-      title: "Emergency info",
-      subtitle: "999 for emergencies, 101 for non-emergency police.",
+      titleKey: "emergency_info",
+      subtitleKey: "emergency_numbers_tip",
       icon: Icons.warning_amber_rounded,
+      imagePath: "lib/images/emergency.jpeg",
     ),
   ];
 
   final List<_Feature> quickFeatures = const [
-    _Feature(title: "Emergency", icon: Icons.emergency, route: "/sos"),
-    _Feature(title: "Healthcare", icon: Icons.local_hospital, route: "/health"),
-    _Feature(title: "Bins", icon: Icons.delete_outline, route: "/bins"),
-    _Feature(title: "Transport", icon: Icons.directions_bus, route: "/transport"),
-    _Feature(title: "Weather", icon: Icons.cloud, route: "/weather"),
-    _Feature(title: "Map", icon: Icons.map_outlined, route: "/map"),
+    _Feature(titleKey: "emergency", icon: Icons.emergency, route: "/sos"),
+    _Feature(titleKey: "healthcare", icon: Icons.local_hospital, route: "/health"),
+    _Feature(titleKey: "bins", icon: Icons.delete_outline, route: "/bins"),
+    _Feature(titleKey: "transport", icon: Icons.directions_bus, route: "/transport"),
+    _Feature(titleKey: "weather", icon: Icons.cloud, route: "/weather"),
+    _Feature(titleKey: "map", icon: Icons.map_outlined, route: "/map"),
   ];
 
   @override
@@ -65,99 +68,92 @@ class _HomeScreenState extends State<HomeScreen> {
     _pageController.dispose();
     super.dispose();
   }
-  
+
   @override
-    Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Material(
-        color: Colors.transparent,
-        child: Container(
+      color: Colors.transparent,
+      child: Container(
         decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.vertical(
+          color: Colors.white,
+          borderRadius: BorderRadius.vertical(
             top: Radius.circular(26),
-            ),
+          ),
         ),
         child: ListView(
-            padding: const EdgeInsets.all(16),
-            children: [
-                const Text(
-                    "Welcome to Sheffield",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-                ),
+          padding: const EdgeInsets.all(16),
+          children: [
+            Text(
+              tr(context, "welcome"),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+            ),
             _buildBanner(),
             const SizedBox(height: 18),
-
             Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                const Text(
-                    "Quick Access",
-                    style: TextStyle(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  tr(context, "quick_access"),
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    ),
+                  ),
                 ),
                 TextButton(
-                    onPressed: () {
+                  onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                        builder: (context) =>
-                            const CategoriesScreen(),
-                        ),
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CategoriesScreen(),
+                      ),
                     );
-                    },
-                    child: const Text("More"),
+                  },
+                  child: Text(tr(context, "more")),
                 ),
-                ],
+              ],
             ),
-
             const SizedBox(height: 10),
-
             GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: quickFeatures.length + 1,
-                gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: quickFeatures.length + 1,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
                 childAspectRatio: 1.25,
-                ),
-                itemBuilder: (context, index) {
+              ),
+              itemBuilder: (context, index) {
                 if (index == quickFeatures.length) {
-                    return _MoreTile(
+                  return _MoreTile(
                     onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                        builder: (context) =>
-                            const CategoriesScreen(),
-                        ),
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CategoriesScreen(),
+                      ),
                     ),
+                  );
                 }
 
                 final f = quickFeatures[index];
 
                 return _FeatureTile(
-                    title: f.title,
-                    icon: f.icon,
-                    onTap: () => Navigator.push(
+                  title: tr(context, f.titleKey),
+                  icon: f.icon,
+                  onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            const CategoriesScreen(),
+                      builder: (context) => const CategoriesScreen(),
                     ),
-                    ),
+                  ),
                 );
-                },
+              },
             ),
-            ],
+          ],
         ),
-        ),
+      ),
     );
-    }
-
+  }
 
   Widget _buildBanner() {
     return SizedBox(
@@ -168,50 +164,66 @@ class _HomeScreenState extends State<HomeScreen> {
         onPageChanged: (i) => _pageIndex = i,
         itemBuilder: (context, i) {
           final b = banners[i];
-          return Container(
-            margin: const EdgeInsets.only(right: 8),
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: primaryBlue,
+          return Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: ClipRRect(
               borderRadius: BorderRadius.circular(18),
-            ),
-            child: Row(
-              children: [
-                Container(
-                  height: 54,
-                  width: 54,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.14),
-                    borderRadius: BorderRadius.circular(16),
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: Image.asset(
+                      b.imagePath,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  child: Icon(b.icon, color: Colors.white, size: 28),
-                ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        b.title,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        b.subtitle,
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.85),
-                          fontSize: 13,
-                        ),
-                      ),
-                    ],
+                  Positioned.fill(
+                    child: Container(
+                      color: Colors.black.withOpacity(0.45),
+                    ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 54,
+                          width: 54,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.18),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Icon(b.icon, color: Colors.white, size: 28),
+                        ),
+                        const SizedBox(width: 14),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                tr(context, b.titleKey),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Text(
+                                tr(context, b.subtitleKey),
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.88),
+                                  fontSize: 13,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },
@@ -221,17 +233,29 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class _BannerItem {
-  final String title;
-  final String subtitle;
+  final String titleKey;
+  final String subtitleKey;
   final IconData icon;
-  const _BannerItem({required this.title, required this.subtitle, required this.icon});
+  final String imagePath;
+
+  const _BannerItem({
+    required this.titleKey,
+    required this.subtitleKey,
+    required this.icon,
+    required this.imagePath,
+  });
 }
 
 class _Feature {
-  final String title;
+  final String titleKey;
   final IconData icon;
   final String route;
-  const _Feature({required this.title, required this.icon, required this.route});
+
+  const _Feature({
+    required this.titleKey,
+    required this.icon,
+    required this.route,
+  });
 }
 
 class _FeatureTile extends StatelessWidget {
@@ -293,13 +317,19 @@ class _MoreTile extends StatelessWidget {
           border: Border.all(color: Colors.grey.shade300),
           color: Colors.grey.shade100,
         ),
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(Icons.grid_view_rounded, color: Color(0xFF13384A), size: 30),
-            Spacer(),
-            Text("More", style: TextStyle(fontWeight: FontWeight.w700)),
-            Text("All categories", style: TextStyle(color: Colors.grey, fontSize: 12)),
+            const Icon(Icons.grid_view_rounded, color: Color(0xFF13384A), size: 30),
+            const Spacer(),
+            Text(
+              tr(context, "more"),
+              style: const TextStyle(fontWeight: FontWeight.w700),
+            ),
+            Text(
+              tr(context, "all_categories"),
+              style: const TextStyle(color: Colors.grey, fontSize: 12),
+            ),
           ],
         ),
       ),

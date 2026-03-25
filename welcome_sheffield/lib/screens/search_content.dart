@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:welcome_sheffield/app_state.dart';
 import 'detail_page.dart';
 import 'contactus_screen.dart';
 
@@ -14,21 +15,21 @@ class _SearchContentState extends State<SearchContent> {
   String _query = "";
 
   final List<String> _allItems = const [
-    'Waste & Recycling',
-    'Roads, Pavements & Transport',
-    'Housing & Property',
-    'Community & Safety',
-    'Emergencies & Severe Weather',
-    'Housing & Homeless',
-    'Families and Education',
-    'Public Spaces',
-    'Libraries, learning and help',
-    'Health & Care',
-    'Benefits and Cost of Living',
-    'Events and Tourism',
-    'Disability and Accessibility',
-    'Legal rights and immigration',
-    'Contact Us/Help',
+    'waste',
+    'roads',
+    'housing',
+    'community',
+    'emergency',
+    'homeless',
+    'family',
+    'public',
+    'library',
+    'health',
+    'benefits',
+    'events',
+    'disability',
+    'legal',
+    'contact',
   ];
 
   List<String> get _filteredItems {
@@ -44,14 +45,50 @@ class _SearchContentState extends State<SearchContent> {
   }
 
   List<String> _keywordsFor(String title) {
-    final t = title.toLowerCase();
-    if (t.contains("emergencies")) return ["999", "111", "police", "ambulance", "fire", "weather"];
-    if (t.contains("health")) return ["nhs", "gp", "doctor", "hospital", "pharmacy", "care"];
-    if (t.contains("housing")) return ["rent", "tenancy", "landlord", "homeless", "shelter"];
-    if (t.contains("legal")) return ["visa", "immigration", "rights", "law", "solicitor"];
-    if (t.contains("benefits")) return ["uc", "universal credit", "support", "money", "cost"];
-    if (t.contains("waste")) return ["bin", "recycling", "rubbish", "trash"];
+    if (title == "emergency") return ["999", "111", "police", "fire"];
+    if (title == "health") return ["nhs", "gp", "doctor"];
+    if (title == "housing") return ["rent", "tenancy"];
+    if (title == "legal") return ["visa", "immigration"];
+    if (title == "benefits") return ["money", "support"];
+    if (title == "waste") return ["bin", "recycling"];
     return const [];
+  }
+
+  String titleKey(String key) {
+    switch (key) {
+      case "waste":
+        return "waste";
+      case "roads":
+        return "roads";
+      case "housing":
+        return "housing";
+      case "community":
+        return "community";
+      case "emergency":
+        return "emergency";
+      case "homeless":
+        return "homeless";
+      case "family":
+        return "family";
+      case "public":
+        return "public";
+      case "library":
+        return "library";
+      case "health":
+        return "health";
+      case "benefits":
+        return "benefits";
+      case "events":
+        return "events";
+      case "disability":
+        return "disability";
+      case "legal":
+        return "legal";
+      case "contact":
+        return "contact_help";
+      default:
+        return key;
+    }
   }
 
   @override
@@ -62,6 +99,7 @@ class _SearchContentState extends State<SearchContent> {
 
   @override
   Widget build(BuildContext context) {
+    final appState = AppState.of(context);
     final items = _filteredItems;
 
     return Container(
@@ -77,7 +115,7 @@ class _SearchContentState extends State<SearchContent> {
               onChanged: (value) => setState(() => _query = value),
               textInputAction: TextInputAction.search,
               decoration: InputDecoration(
-                hintText: "Search services, e.g. NHS, housing, 999…",
+                hintText: appState.tr("search_hint"),
                 prefixIcon: const Icon(Icons.search),
                 suffixIcon: _query.isEmpty
                     ? null
@@ -92,35 +130,16 @@ class _SearchContentState extends State<SearchContent> {
                 fillColor: Colors.grey.shade100,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(14),
-                  borderSide: BorderSide(color: Colors.grey.shade300),
                 ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(14),
-                  borderSide: BorderSide(color: Colors.grey.shade300),
-                ),
-                contentPadding: const EdgeInsets.symmetric(vertical: 12),
               ),
             ),
           ),
-
           if (items.isEmpty)
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    "No results found",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                  ),
-                  SizedBox(height: 6),
-                  Text(
-                    "Try a different keyword (e.g. “NHS”, “visa”, “rent”, “police”).",
-                    style: TextStyle(fontSize: 14, color: Colors.black54),
-                  ),
-                ],
-              ),
+              padding: const EdgeInsets.all(16),
+              child: Text(appState.tr("no_results")),
             ),
+          for (final key in items) _buildListItem(key, context),
 
           for (final title in items) _buildListItem(title, context),
         ],
@@ -128,7 +147,10 @@ class _SearchContentState extends State<SearchContent> {
     );
   }
 
-  Widget _buildListItem(String title, BuildContext context) {
+  Widget _buildListItem(String key, BuildContext context) {
+    final appState = AppState.of(context);
+    final title = appState.tr(titleKey(key));
+
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -142,15 +164,19 @@ class _SearchContentState extends State<SearchContent> {
         ),
         trailing: const Icon(Icons.chevron_right, color: Colors.grey),
         onTap: () {
-          if (title == 'Contact Us/Help') {
+          if (key == "contact") {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const ContactUsScreen()),
+              MaterialPageRoute(
+                builder: (context) => const ContactUsScreen(),
+              ),
             );
           } else {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => DetailPage(title: title)),
+              MaterialPageRoute(
+                builder: (context) => DetailPage(title: title),
+              ),
             );
           }
         },

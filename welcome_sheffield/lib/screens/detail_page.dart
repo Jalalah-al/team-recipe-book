@@ -8,7 +8,7 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF174A5C), // Her blue
+      backgroundColor: const Color(0xFF174A5C), 
       body: SafeArea(
         child: Column(
           children: [

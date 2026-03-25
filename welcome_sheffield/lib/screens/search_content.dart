@@ -107,6 +107,7 @@ class _SearchContentState extends State<SearchContent> {
       child: ListView(
         padding: const EdgeInsets.symmetric(vertical: 8),
         children: [
+         
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
             child: TextField(
@@ -139,6 +140,8 @@ class _SearchContentState extends State<SearchContent> {
               child: Text(appState.tr("no_results")),
             ),
           for (final key in items) _buildListItem(key, context),
+
+          for (final title in items) _buildListItem(title, context),
         ],
       ),
     );

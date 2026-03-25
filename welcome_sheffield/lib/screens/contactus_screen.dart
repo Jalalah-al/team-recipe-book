@@ -60,7 +60,6 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Header
                 const Text(
                   'CONTACT US',
                   style: TextStyle(
@@ -72,7 +71,6 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                 ),
                 const SizedBox(height: 28),
 
-                // Name
                 const Text(
                   'Name',
                   style: TextStyle(
@@ -92,7 +90,6 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
 
                 const SizedBox(height: 22),
 
-                // Email
                 const Text(
                   'Email Address',
                   style: TextStyle(
@@ -116,7 +113,6 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
 
                 const SizedBox(height: 22),
 
-                // Message
                 const Text(
                   'Message',
                   style: TextStyle(
@@ -138,7 +134,6 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
 
                 const SizedBox(height: 34),
 
-                // Buttons
                 Row(
                   children: [
                     TextButton(

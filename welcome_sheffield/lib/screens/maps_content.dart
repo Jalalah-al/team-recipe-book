@@ -272,7 +272,7 @@ class _MapsContentState extends State<MapsContent> {
                     _buildCategoryButton(Icons.park, tr(context, 'green_spaces'), 'parks'),
                     _buildCategoryButton(Icons.local_hospital, tr(context, 'healthcare'), 'healthcare'),
                     _buildCategoryButton(Icons.school, tr(context, 'education'), 'education'),
-                    _buildCategoryButton(Icons.shopping_cart, tr(context, 'shops'), 'shops'),
+                    _buildCategoryButton(Icons.shopping_cart, tr(context, 'shopping'), 'shopping'),
                     _buildCategoryButton(Icons.restaurant, tr(context, 'food_drink'), 'food'),
                     _buildCategoryButton(Icons.account_balance, tr(context, 'council_buildings'), 'council'),
                     _buildCategoryButton(Icons.search, tr(context, 'search_anything'), 'search'),

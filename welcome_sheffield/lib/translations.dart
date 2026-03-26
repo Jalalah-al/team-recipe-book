@@ -103,6 +103,17 @@ const Map<String, Map<String, String>> translations = {
   "restaurant": "Restaurant",
   "pub": "Pub",
   "library_place": "Library",
+  "education": "Education",
+
+  //checklist
+  "checklist": "Checklist",
+  "getting_started": "Getting started",
+  "gp": "Register with a GP",
+  "emergency_numbers": "Learn emergency numbers",
+  "bank": "Open a bank account",
+  "sim": "Get a SIM card",
+  "supermarket": "Find a supermarket",
+  "council_number": "Register with the council",
   },
 
   'ar': {
@@ -209,6 +220,17 @@ const Map<String, Map<String, String>> translations = {
   "restaurant": "مطعم",
   "pub": "حانة",
   "library_place": "مكتبة",
+  "education": "تعليم",
+
+  //checklist
+  "checklist": "قائمة المهام",
+  "getting_started": "البدء في شيفيلد",
+  "gp": "التسجيل لدى الطبيب",
+  "emergency_numbers": "معرفة أرقام الطوارئ",
+  "bank": "فتح حساب بنكي",
+  "sim": "الحصول على شريحة اتصال",
+  "supermarket": "العثور على سوبرماركت",
+  "council_number": "التسجيل في المجلس المحلي",
   },
 
 
@@ -315,6 +337,17 @@ const Map<String, Map<String, String>> translations = {
   "restaurant": "Restaurant",
   "pub": "Kneipe",
   "library_place": "Bibliothek",
+  "education": "Bildung",
+
+  //checklist
+  "checklist": "Checkliste",
+  "getting_started": "Erste Schritte",
+  "gp": "Beim Hausarzt registrieren",
+  "emergency_numbers": "Notrufnummern lernen",
+  "bank": "Bankkonto eröffnen",
+  "sim": "SIM-Karte besorgen",
+  "supermarket": "Supermarkt finden",
+  "council_number": "Beim Rathaus registrieren",
   },
   
   'pl': {
@@ -420,6 +453,17 @@ const Map<String, Map<String, String>> translations = {
   "restaurant": "Restauracja",
   "pub": "Pub",
   "library_place": "Biblioteka",
+  "education": "Edukacja",
+
+  //checklist
+  "checklist": "Lista kontrolna",
+  "getting_started": "Pierwsze kroki",
+  "gp": "Zarejestruj się u lekarza",
+  "emergency_numbers": "Poznaj numery alarmowe",
+  "bank": "Otwórz konto bankowe",
+  "sim": "Kup kartę SIM",
+  "supermarket": "Znajdź supermarket",
+  "council_number": "Zarejestruj się w urzędzie",
   },
 
   'es': {
@@ -516,6 +560,17 @@ const Map<String, Map<String, String>> translations = {
   "restaurant": "Restaurante",
   "pub": "Pub",
   "library_place": "Biblioteca",
+  "education": "Educación",
+
+  //checklist
+  "checklist": "Lista de verificación",
+  "getting_started": "Primeros pasos",
+  "gp": "Registrarse con un médico",
+  "emergency_numbers": "Aprender números de emergencia",
+  "bank": "Abrir una cuenta bancaria",
+  "sim": "Obtener una tarjeta SIM",
+  "supermarket": "Encontrar un supermercado",
+  "council_number": "Registrarse en el ayuntamiento",
   },
 
   'fr': {
@@ -621,6 +676,17 @@ const Map<String, Map<String, String>> translations = {
   "restaurant": "Restaurant",
   "pub": "Pub",
   "library_place": "Bibliothèque",
+  "education": "Éducation",
+
+  //checklist
+  "checklist": "Liste de contrôle",
+  "getting_started": "Premiers pas",
+  "gp": "S’inscrire chez un médecin",
+  "emergency_numbers": "Apprendre les numéros d’urgence",
+  "bank": "Ouvrir un compte bancaire",
+  "sim": "Obtenir une carte SIM",
+  "supermarket": "Trouver un supermarché",
+  "council_number": "S’inscrire auprès du conseil local",
   },
 
   'ur': {
@@ -728,6 +794,18 @@ const Map<String, Map<String, String>> translations = {
   "restaurant": "ریستوران",
   "pub": "پب",
   "library_place": "لائبریری",
+  "education": "تعلیم",
+
+  //checklist
+  "checklist": "چیک لسٹ",
+  "getting_started": "شیفیلڈ میں شروعات",
+  "gp": "ڈاکٹر کے ساتھ رجسٹر کریں",
+  "emergency_numbers": "ہنگامی نمبرز سیکھیں",
+  "bank": "بینک اکاؤنٹ کھولیں",
+  "sim": "سم کارڈ حاصل کریں",
+  "supermarket": "سپر مارکیٹ تلاش کریں",
+  "council_number": "مقامی کونسل میں رجسٹر کریں",  
+
   },
 
   'zh': {
@@ -835,6 +913,18 @@ const Map<String, Map<String, String>> translations = {
   "restaurant": "餐厅",
   "pub": "酒吧",
   "library_place": "图书馆",
+  "education": "教育",
+
+  //checklist
+  "checklist": "清单",
+  "getting_started": "入门",
+  "gp": "注册GP",
+  "emergency_numbers": "学习紧急号码",  
+  "bank": "开设银行账户",
+  "sim": "获取SIM卡",
+  "supermarket": "找到超市",
+  "council_number": "在市政厅注册",
+
   },
 
   'ro': {
@@ -940,6 +1030,18 @@ const Map<String, Map<String, String>> translations = {
   "restaurant": "Restaurant",
   "pub": "Pub",
   "library_place": "Bibliotecă",
+  "education": "Educație",
+  
+
+  //checklist
+  "checklist": "Listă de verificare",
+  "getting_started": "Începeți",
+  "gp": "Înregistrează-te la GP",
+  "emergency_numbers": "Învață numerele de urgență",
+  "bank": "Deschide un cont bancar",
+  "sim": "Obține o cartelă SIM",
+  "supermarket": "Găsește un supermarket",
+  "council_number": "Înregistrează-te la consiliu",
   },
 
   'sk': {
@@ -1045,6 +1147,18 @@ const Map<String, Map<String, String>> translations = {
   "restaurant": "Reštaurácia",
   "pub": "Pub",
   "library_place": "Knižnica",
+  "education": "Vzdělávání",
+  
+
+  //checklist
+  "checklist": "Kontrolní seznam",
+  "getting_started": "Začínáme",
+  "gp": "Zaregistrujte se u lékaře",
+  "emergency_numbers": "Naučte se nouzová čísla",
+  "bank": "Otevřete bankovní účet",
+  "sim": "Získejte SIM kartu",
+  "supermarket": "Najděte supermarket",
+  "council_number": "Zaregistrujte se u místního úřadu",
   },
 
 };

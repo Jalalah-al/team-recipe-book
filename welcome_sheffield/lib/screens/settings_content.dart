@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:welcome_sheffield/app_state.dart';
+import 'package:welcome_sheffield/screens/language_screen.dart';
 
 class SettingsContent extends StatelessWidget {
   const SettingsContent({super.key});
@@ -35,6 +36,14 @@ class SettingsContent extends StatelessWidget {
                 Icons.language,
                 appState.tr('language'),
                 "English",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LanguageScreen(),
+                    ),
+                  );
+                },
               ),
               _buildSettingItem(
                 context,
@@ -137,11 +146,12 @@ class SettingsContent extends StatelessWidget {
   }
 
   Widget _buildSettingItem(
-    BuildContext context,
-    IconData icon,
-    String title,
-    String value,
-  ) {
+  BuildContext context,
+  IconData icon,
+  String title,
+  String value, {
+  VoidCallback? onTap,
+  }) {
     return ListTile(
       leading: Icon(icon, color: const Color(0xFF13384A)),
       title: Text(title),
@@ -151,7 +161,7 @@ class SettingsContent extends StatelessWidget {
               style: TextStyle(color: Colors.grey.shade600),
             )
           : const Icon(Icons.arrow_forward_ios, size: 16),
-      onTap: () {},
+      onTap: onTap,
     );
   }
 }

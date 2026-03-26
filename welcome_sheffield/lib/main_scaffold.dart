@@ -15,11 +15,11 @@ class MainScaffold extends StatefulWidget {
 class _MainScaffoldState extends State<MainScaffold> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = const [
-    HomeScreen(),
-    SearchContent(),
-    MapsContent(),
-    SettingsContent(),
+  List<Widget> get _pages => [
+    HomeScreen(onNavigateToTab: _onItemTapped),
+    const SearchContent(),
+    const MapsContent(),
+    const SettingsContent(),
   ];
 
   void _onItemTapped(int index) {

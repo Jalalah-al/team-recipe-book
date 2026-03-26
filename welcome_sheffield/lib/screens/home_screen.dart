@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'categories_screen.dart';
 import 'emergency_page.dart';
 import '../tr_helper.dart';
+import 'checklist_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final void Function(int)? onNavigateToTab;
+
+  const HomeScreen({super.key, this.onNavigateToTab});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -42,8 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _Feature(titleKey: "emergency", icon: Icons.emergency, route: "/sos"),
     _Feature(titleKey: "healthcare", icon: Icons.local_hospital, route: "/health"),
     _Feature(titleKey: "bins", icon: Icons.delete_outline, route: "/bins"),
-    _Feature(titleKey: "transport", icon: Icons.directions_bus, route: "/transport"),
-    _Feature(titleKey: "weather", icon: Icons.cloud, route: "/weather"),
+    _Feature(titleKey: "checklist", icon: Icons.checklist_rounded, route: "/checklist"),
     _Feature(titleKey: "map", icon: Icons.map_outlined, route: "/map"),
   ];
 
@@ -124,12 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const CategoriesScreen(),
-                      ),
-                    );
+                    widget.onNavigateToTab?.call(1);
                   },
                   child: Text(tr(context, "more")),
                 ),
@@ -150,6 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (index == quickFeatures.length) {
                   return _MoreTile(
                     onTap: () {
+                      widget.onNavigateToTab?.call(1);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -163,6 +161,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 final feature = quickFeatures[index];
 
                 return _FeatureTile(
+                  title: tr(context, f.titleKey),
+                  icon: f.icon,
+                  onTap: () {
+                    if (f.route == "/checklist") {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ChecklistScreen(),
+                        ),
+                      );
+                    } else if (f.route == "/map") {
+                      widget.onNavigateToTab?.call(2);
+                    } else {
+                      widget.onNavigateToTab?.call(1);
+                    }
+                  },
                   title: tr(context, feature.titleKey),
                   icon: feature.icon,
                   onTap: () => _handleFeatureTap(feature),

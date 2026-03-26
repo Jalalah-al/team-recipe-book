@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'categories_screen.dart';
+import 'emergency_page.dart';
 import '../tr_helper.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -69,6 +70,24 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
+  void _handleFeatureTap(_Feature feature) {
+    if (feature.route == "/sos") {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const EmergencyPage(),
+        ),
+      );
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const CategoriesScreen(),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -85,8 +104,12 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Text(
               tr(context, "welcome"),
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+              ),
             ),
+            const SizedBox(height: 12),
             _buildBanner(),
             const SizedBox(height: 18),
             Row(
@@ -126,26 +149,23 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context, index) {
                 if (index == quickFeatures.length) {
                   return _MoreTile(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const CategoriesScreen(),
-                      ),
-                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CategoriesScreen(),
+                        ),
+                      );
+                    },
                   );
                 }
 
-                final f = quickFeatures[index];
+                final feature = quickFeatures[index];
 
                 return _FeatureTile(
-                  title: tr(context, f.titleKey),
-                  icon: f.icon,
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const CategoriesScreen(),
-                    ),
-                  ),
+                  title: tr(context, feature.titleKey),
+                  icon: feature.icon,
+                  onTap: () => _handleFeatureTap(feature),
                 );
               },
             ),
@@ -163,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: banners.length,
         onPageChanged: (i) => _pageIndex = i,
         itemBuilder: (context, i) {
-          final b = banners[i];
+          final banner = banners[i];
           return Padding(
             padding: const EdgeInsets.only(right: 8),
             child: ClipRRect(
@@ -172,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Positioned.fill(
                     child: Image.asset(
-                      b.imagePath,
+                      banner.imagePath,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -192,7 +212,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: Colors.white.withOpacity(0.18),
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          child: Icon(b.icon, color: Colors.white, size: 28),
+                          child: Icon(
+                            banner.icon,
+                            color: Colors.white,
+                            size: 28,
+                          ),
                         ),
                         const SizedBox(width: 14),
                         Expanded(
@@ -201,7 +225,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                tr(context, b.titleKey),
+                                tr(context, banner.titleKey),
                                 style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
@@ -210,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               const SizedBox(height: 6),
                               Text(
-                                tr(context, b.subtitleKey),
+                                tr(context, banner.subtitleKey),
                                 style: TextStyle(
                                   color: Colors.white.withOpacity(0.88),
                                   fontSize: 13,
@@ -264,6 +288,7 @@ class _FeatureTile extends StatelessWidget {
   final VoidCallback onTap;
 
   const _FeatureTile({
+    super.key,
     required this.title,
     required this.icon,
     required this.onTap,
@@ -291,9 +316,16 @@ class _FeatureTile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(icon, color: const Color(0xFF13384A), size: 30),
+            Icon(
+              icon,
+              color: const Color(0xFF13384A),
+              size: 30,
+            ),
             const Spacer(),
-            Text(title, style: const TextStyle(fontWeight: FontWeight.w600)),
+            Text(
+              title,
+              style: const TextStyle(fontWeight: FontWeight.w600),
+            ),
           ],
         ),
       ),
@@ -303,7 +335,11 @@ class _FeatureTile extends StatelessWidget {
 
 class _MoreTile extends StatelessWidget {
   final VoidCallback onTap;
-  const _MoreTile({required this.onTap});
+
+  const _MoreTile({
+    super.key,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -320,7 +356,11 @@ class _MoreTile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Icon(Icons.grid_view_rounded, color: Color(0xFF13384A), size: 30),
+            const Icon(
+              Icons.grid_view_rounded,
+              color: Color(0xFF13384A),
+              size: 30,
+            ),
             const Spacer(),
             Text(
               tr(context, "more"),
@@ -328,7 +368,10 @@ class _MoreTile extends StatelessWidget {
             ),
             Text(
               tr(context, "all_categories"),
-              style: const TextStyle(color: Colors.grey, fontSize: 12),
+              style: const TextStyle(
+                color: Colors.grey,
+                fontSize: 12,
+              ),
             ),
           ],
         ),

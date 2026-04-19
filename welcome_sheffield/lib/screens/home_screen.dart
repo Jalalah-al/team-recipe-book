@@ -309,16 +309,18 @@ class _FeatureTile extends StatelessWidget {
           ],
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(
               icon,
               color: const Color(0xFF13384A),
-              size: 30,
+              size: 60,
             ),
-            const Spacer(),
+            const SizedBox(height: 10),
             Text(
               title,
+              textAlign: TextAlign.center,
               style: const TextStyle(fontWeight: FontWeight.w600),
             ),
           ],

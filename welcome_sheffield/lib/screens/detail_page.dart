@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'content.dart';
 
 class DetailPage extends StatelessWidget {
   final String title;
@@ -7,8 +8,59 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final content = contentData[title];
+
+    if (content == null) {
+      return Scaffold(
+        backgroundColor: const Color(0xFF174A5C),
+        body: SafeArea(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.arrow_back, color: Colors.white),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        title,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(24),
+                    child: Text(
+                      'No content found for: $title',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
-      backgroundColor: const Color(0xFF174A5C), 
+      backgroundColor: const Color(0xFF174A5C),
       body: SafeArea(
         child: Column(
           children: [
@@ -21,12 +73,14 @@ class DetailPage extends StatelessWidget {
                     onPressed: () => Navigator.pop(context),
                   ),
                   const SizedBox(width: 8),
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  Expanded(
+                    child: Text(
+                      title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
@@ -46,18 +100,28 @@ class DetailPage extends StatelessWidget {
                     children: [
                       Container(
                         height: 180,
+                        width: double.infinity,
                         decoration: BoxDecoration(
-                          color: Colors.grey[300],
                           borderRadius: BorderRadius.circular(16),
                         ),
-                        child: const Center(child: Icon(Icons.image, size: 50)),
+                        clipBehavior: Clip.hardEdge,
+                        child: Image.asset(
+                          content.image,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       const SizedBox(height: 20),
-                      Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      Text(
+                        content.title,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       const SizedBox(height: 10),
-                      const Text(
-                        "This is placeholder content. Replace with real information.",
-                        style: TextStyle(fontSize: 16),
+                      Text(
+                        content.info,
+                        style: const TextStyle(fontSize: 16),
                       ),
                     ],
                   ),

@@ -32,6 +32,41 @@ class _SearchContentState extends State<SearchContent> {
     'contact',
   ];
 
+  String contentTitleFor(String key) {
+    switch (key) {
+      case "waste":
+        return "Waste & Recycling";
+      case "roads":
+        return "Roads, Pavements & Transport";
+      case "housing":
+        return "Housing & Property";
+      case "community":
+        return "Community & Safety";
+      case "emergency":
+        return "Emergencies & Severe Weather";
+      case "homeless":
+        return "Housing & Homeless";
+      case "family":
+        return "Families and Education";
+      case "public":
+        return "Public Spaces";
+      case "library":
+        return "Libraries, learning and help";
+      case "health":
+        return "Health & Care";
+      case "benefits":
+        return "Benefits and Cost of Living";
+      case "events":
+        return "Events and Tourism";
+      case "disability":
+        return "Disability and Accessibility";
+      case "legal":
+        return "Legal Rights and Immigration";
+      default:
+        return key;
+    }
+  }
+
   List<String> get _filteredItems {
     final q = _query.trim().toLowerCase();
     if (q.isEmpty) return _allItems;
@@ -141,7 +176,6 @@ class _SearchContentState extends State<SearchContent> {
             ),
           for (final key in items) _buildListItem(key, context),
 
-          for (final title in items) _buildListItem(title, context),
         ],
       ),
     );
@@ -175,7 +209,7 @@ class _SearchContentState extends State<SearchContent> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => DetailPage(title: title),
+                builder: (context) => DetailPage(title: contentTitleFor(key)),
               ),
             );
           }
